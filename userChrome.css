@@ -8,7 +8,7 @@
 
 /* Disable native toggler that triggers JS listener */
 #fullscr-toggler {
-pointer-events: none;
+    pointer-events: none;
 }
 
 /* Allow registering hover state over toolbars */
