@@ -1,12 +1,9 @@
-/**
- * Make #navigator-toolbox float over page content in maximized window and fullscreen modes
- * Customizable version
- */
-
 :root {
-    --tab-bar-height: 55px;
+    --tab-bar-height: 58px;
     --nav-bar-height: 28px;
+    --hover-height: 1px;
     --toolbar-height: calc(var(--tab-bar-height) + var(--nav-bar-height));
+    --buffer-height: calc(var(--toolbar-height) + var(--hover-height));
 }
 
 /* Disable native toggler that triggers JS listener */
@@ -27,6 +24,18 @@ pointer-events: none;
     z-index: 1;
 }
 
+/* Create a hover-sensitive buffer area */
+:root:not([sizemode="normal"]):not([customizing]) #navigator-toolbox:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -var(--buffer-height);
+    left: 0;
+    width: 100%;
+    height: var(--buffer-height);
+    z-index: 0;
+}
+
 /* Show toolbox on hover or focus */
 :root[customizing] #navigator-toolbox,
 :root:not([sizemode="normal"]):not([customizing]) #navigator-toolbox:focus-within,
@@ -42,11 +51,5 @@ pointer-events: none;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
-    height: 100vh !important;
-}
-
-/* Adjust for non-fullscreen mode */
-:root:not([inFullscreen]) #browser {
-    top: 0 !important;
     height: 100vh !important;
 }
