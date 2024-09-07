@@ -1,12 +1,10 @@
-This repository contains a custom `userChrome.css` script designed to improve the appearance and behavior of the Firefox browser by hiding the top bar (navigator toolbox) in maximized and fullscreen modes, with a trigger area to reveal it when hovering slightly below the default position.
+This repository contains a custom `userChrome.css` script designed to improve the appearance and behavior of the Firefox browser by hiding the top bar (navigator toolbox), with a trigger area to reveal it when hovering slightly below the default position.
 
 ## Features
 
-- **Auto-hide Top Bar**: The top bar (tabs, navigation bar, etc.) is hidden when the window is maximized or in fullscreen mode, providing a cleaner, more immersive browsing experience.
+- **Auto-hide Top Bar**: The top bar (tabs, navigation bar, etc.) is hidden when the window is maximized or in fullscreen mode.
 - **Hover Trigger**: A 1px invisible area just below the hidden bar is added so the bar reappears when you hover your mouse slightly below its normal position.
-- **Smooth Animation**: The bar is revealed smoothly with a quick transition, providing a responsive feel.
-- **Fixed Browser Position**: Ensures that the browser's content fills the entire viewport without overlap, even in fullscreen mode.
-
+  
 ## Installation
 
 1. **Locate Firefox Profile Directory**:
