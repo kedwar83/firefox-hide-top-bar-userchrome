@@ -1,7 +1,13 @@
 /**
  * Make #navigator-toolbox float over page content in maximized window and fullscreen modes
- * Optimized version with hover trigger adjustment
+ * Customizable version
  */
+
+:root {
+    --tab-bar-height: 55px;
+    --nav-bar-height: 28px;
+    --toolbar-height: calc(var(--tab-bar-height) + var(--nav-bar-height));
+}
 
 /* Disable native toggler that triggers JS listener */
 #fullscr-toggler {
@@ -13,23 +19,23 @@ pointer-events: none;
     -moz-window-dragging: no-drag !important;
 }
 
-/* Hide the bar and create a 1px hover trigger area */
+/* Hide the top bar */
 :root:not([sizemode="normal"]):not([customizing]) #navigator-toolbox {
-    margin-top: calc(-56px) !important; /* Hide the top bar */
+    margin-top: calc(-1 * var(--toolbar-height)) !important;
     transition: margin-top 0.1s ease 0.05s !important;
     position: relative;
     z-index: 1;
-    padding-bottom: 1px; /* Create the 1px hover area */
-    background-color: rgba(255, 0, 0, 0.3); /* Temporary red background for testing */
 }
 
-/* Show the bar when the hover area is triggered */
+/* Show toolbox on hover or focus */
+:root[customizing] #navigator-toolbox,
+:root:not([sizemode="normal"]):not([customizing]) #navigator-toolbox:focus-within,
 :root:not([sizemode="normal"]):not([customizing]) #navigator-toolbox:hover {
-    margin-top: 0 !important; /* Reveal the top bar */
+    margin-top: 0 !important;
     transition-delay: 0s !important;
 }
 
-/* Simplify #browser positioning */
+/* Ensure browser content fills the window */
 :root:not([sizemode="normal"]):not([customizing]) #browser {
     position: fixed;
     z-index: 0;
@@ -39,7 +45,7 @@ pointer-events: none;
     height: 100vh !important;
 }
 
-/* Remove unnecessary height adjustment for non-fullscreen mode */
+/* Adjust for non-fullscreen mode */
 :root:not([inFullscreen]) #browser {
     top: 0 !important;
     height: 100vh !important;
